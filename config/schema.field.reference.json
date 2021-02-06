@@ -1,0 +1,8 @@
+{
+  "uuid": "fdsdfsdfasf",
+  "type": "field",
+  "join": {
+    "target_type": "schema:type",
+    "target_id": "id"
+  }
+}

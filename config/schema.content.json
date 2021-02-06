@@ -1,0 +1,16 @@
+{
+  "uuid": "fdsdfsdfasf",
+  "type": "root",
+  "fields": [
+    {
+      "name": "Headline",
+      "key": "headline",
+      "type": "field.text"
+    },
+    {
+      "name": "Subline",
+      "key": "subline",
+      "type": "field.text"
+    }
+  ]
+}
