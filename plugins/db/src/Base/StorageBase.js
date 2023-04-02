@@ -15,4 +15,12 @@ export default class StorageBase {
 
   }
 
+  /**
+   * @param {string} type 
+   * @param {int} id 
+   */
+  createLoadQuery(type, id) {
+
+  }
+
 }

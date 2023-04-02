@@ -1,4 +1,10 @@
 {
   "uuid": "fdsdfsdfasf",
-  "type": "field"
+  "type": "field",
+  "table": "field_text",
+  "join": {
+    "[field]": "field",
+    "[type]": "type",
+    "id": "ref"
+  }
 }

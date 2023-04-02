@@ -1,8 +1,13 @@
 {
   "uuid": "fdsdfsdfasf",
   "type": "field",
+  "table": "field_reference",
   "join": {
-    "target_type": "schema:type",
-    "target_id": "id"
+    "data.field": "field",
+    "data.type": "type",
+    "id": "ref"
+  },
+  "ref": {
+    
   }
 }

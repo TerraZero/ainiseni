@@ -10,7 +10,22 @@ export default class SchemaController extends ControllerBase {
   /** @param {import('../Manager/RouterManager').default} router */
   routes(router) {
     router.namespace('schema');
+    router.create('test', '/test', this.serveTest);
     router.create('add', '/add', this.serveAdd).checkPOST();
+  }
+
+  /**
+   * @param {import('~/api/Serve').default} serve 
+   * @param {object} bag
+   */
+  async serveTest(serve, bag) {
+    const schema = this.manager.schema('node.content');
+
+    const query = this.manager.getQuery(schema.key);
+    query.condition('headline', 'Test');
+    query.condition('user.headline', 'Cool');
+
+    return serve.json(schema.config.config).send();
   }
 
   /**

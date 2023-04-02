@@ -1,0 +1,21 @@
+{
+  "uuid": "fdsdfsdfasf",
+  "name": "Content",
+  "table": "content",
+  "type": "node",
+  "fields": [
+    {
+      "name": "Headline",
+      "key": "headline",
+      "type": "text"
+    },
+    {
+      "name": "User",
+      "key": "user",
+      "type": "reference",
+      "config": {
+        "select": "node.user"
+      }
+    }
+  ]
+}

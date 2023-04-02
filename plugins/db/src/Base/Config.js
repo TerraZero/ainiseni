@@ -33,4 +33,9 @@ export default class Config {
     return this;
   }
 
+  cacheClear() {
+    this.manager.cacheClear(this.name);
+    return this;
+  }
+
 }

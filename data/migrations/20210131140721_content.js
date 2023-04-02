@@ -19,3 +19,9 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema.dropTableIfExists('content');
 };
+
+/**
+ * query.condition('text', 'hallo')
+ * query.condition('entity.id', 'hallo')
+ * query.condition('entity.text', 'hallo')
+ */

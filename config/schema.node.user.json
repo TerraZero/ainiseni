@@ -1,0 +1,11 @@
+{
+  "uuid": "fdsdfsdfasf",
+  "type": "node",
+  "fields": [
+    {
+      "name": "Headline",
+      "key": "headline",
+      "type": "text"
+    }
+  ]
+}

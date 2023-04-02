@@ -55,6 +55,13 @@ export default class ConfigManager {
     const path = this.path(name);
 
     FS.writeFileSync(path, JSON.stringify(config.config, null, '  '));
+    this.cacheClear(name);
+  }
+
+  /**
+   * @param {string} name 
+   */
+  cacheClear(name) {
     delete require.cache[require.resolve(this.path(name))];
   }
 

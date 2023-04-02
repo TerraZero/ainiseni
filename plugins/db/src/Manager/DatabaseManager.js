@@ -97,24 +97,26 @@ export default class DatabaseManager {
   }
 
   /**
-   * @param {string} table 
+   * @param {string} type 
+   * @param {string} name
    * 
-   * @returns {Promise<object>}
+   * @returns {import('../Schema/Schema').default}
    */
-  async schema(table) {
-    if (this._schemas[table] === undefined) {
-      this._schemas[table] = new Schema(this, table);
+  schema(type) {
+    if (this._schemas[type] === undefined) {
+      this._schemas[type] = new Schema(this, type, this.config.get('schema.' + type));
     }
-    return await this._schemas[table].getSchema();
+    this._schemas[type].config.cacheClear();
+    return this._schemas[type];
   }
 
   /**
-   * @param {string} table 
+   * @param {string} type 
    * 
    * @returns {QueryBuilder}
    */
-  getQuery(table) {
-    return new QueryBuilder(this, table);
+  getQuery(type) {
+    return new QueryBuilder(this, this.schema(type));
   }
 
 }

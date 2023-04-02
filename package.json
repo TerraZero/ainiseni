@@ -12,6 +12,7 @@
     "@nuxtjs/axios": "^5.12.5",
     "core-js": "^3.8.3",
     "element-ui": "^2.15.0",
+    "fecha": "^4.2.0",
     "knex": "^0.21.17",
     "nuxt": "^2.14.12",
     "pug": "^3.0.0",
@@ -19,7 +20,8 @@
     "route-parser": "0.0.5",
     "sass": "^1.32.5",
     "sass-loader": "^10.1.1",
-    "sqlite3": "^5.0.0"
+    "sqlite3": "^5.0.0",
+    "vue-form-generator": "^2.3.4"
   },
   "devDependencies": {}
 }

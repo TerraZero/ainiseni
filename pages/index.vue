@@ -1,11 +1,15 @@
 <template lang="pug">
   .page(@click="click")
-    h1
-      | HALLO
+    Logo
 </template>
 
 <script>
+import Logo from '~/components/logo/Logo';
+
 export default {
+  components: {
+    Logo
+  },
   data() {
     return {
       lay: 'default',

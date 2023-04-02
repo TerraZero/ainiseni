@@ -4,13 +4,13 @@ export default class QueryBuilder {
 
   /**
    * @param {import('../Manager/DatabaseManager').default} manager
-   * @param {string} type 
+   * @param {import('../Schema/Schema').default} schema 
    */
-  constructor(manager, type) {
+  constructor(manager, schema) {
     this.manager = manager;
-    this.table = table;
-    this.query = this.manager.connection(table);
-    this.joins = {};
+    this.type = type;
+    this.schema = schema;
+    this.query = this.manager.connection(this.schema.table);
   }
 
   as(key, alias) {
@@ -21,13 +21,24 @@ export default class QueryBuilder {
   }
 
   /**
-   * @param {string} target 
+   * @param {string} key 
+   * 
+   * @returns {string}
    */
-  wire(target) {
+  wire(key) {
+    const spread = key.split('.');
+    let schema = this.schema;
+    let target = this.schema.table;
 
+    for (const field of spread) {
+      const newSchema = schema.get(field);
+      if (newSchema === null) break;
+      this.wireJoin()
+    }
+    return target;
   }
 
-  join(from, to, field, foreign) {
+  wireJoin(from, to, field, foreign) {
     const as = [from, field, to, foreign].join('_');
     if (this.joins[as] === undefined) {
       this.joins[as] = as;
@@ -69,22 +80,7 @@ export default class QueryBuilder {
    * @returns {this}
    */
   async condition(key, value, operator = '=') {
-    const condition = new QueryCondition(this, key, value);
-    let definition = null;
-    let table = this.table;
-
-    while (definition = await condition.next()) {
-      switch (definition.op) {
-        case 'where':
-          this.query.where(table + '.' + definition.field, operator, value);
-          break;
-        case 'join':
-        case 'foreign join':
-          table = this.join(table, definition.table, definition.field, definition.foreign);
-          break;
-      }
-    }
-    return this;
+    const target = this.wire(key);
   }
 
   /**
